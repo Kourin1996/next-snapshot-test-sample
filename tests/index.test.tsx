@@ -1,5 +1,5 @@
 import { getPage } from "next-page-tester";
-import { render, screen } from "@testing-library/react";
+import renderer from "react-test-renderer";
 
 describe("index page", () => {
   test('should have "Welcome to"', async () => {
@@ -7,7 +7,7 @@ describe("index page", () => {
       route: "/index",
     });
 
-    render(page);
-    expect(screen.getByText("Welcome to")).toBeInTheDocument();
+    const tree = renderer.create(page).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
