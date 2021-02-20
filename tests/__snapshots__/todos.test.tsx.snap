@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index page should have "Welcome to" 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "flexDirection": "column",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+      }
+    }
+  >
+    <input
+      checked={false}
+      type="checkbox"
+    />
+    <span
+      style={
+        Object {
+          "marginLeft": "8px",
+        }
+      }
+    >
+      test (1) (1)
+    </span>
+  </div>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+      }
+    }
+  >
+    <input
+      checked={true}
+      type="checkbox"
+    />
+    <span
+      style={
+        Object {
+          "marginLeft": "8px",
+        }
+      }
+    >
+      test (2) (2)
+    </span>
+  </div>
+</div>
+`;
