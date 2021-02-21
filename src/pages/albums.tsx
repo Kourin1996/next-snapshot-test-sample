@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { GetServerSideProps, NextPage } from "next";
 import styles from "../styles/albums.module.css";
-import { Album } from "../domain/album";
+import { Album } from "../domain";
 
 type AlbumsPageProps = {
   albums: Album[];
@@ -29,7 +29,7 @@ const AlbumsPage: NextPage<AlbumsPageProps> = (props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<AlbumsPageProps> = async () => {
   const albums = await fetch(
     "https://jsonplaceholder.typicode.com/albums"
   ).then((res) => res.json());

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { GetServerSideProps, NextPage } from "next";
 import { Card } from "../components/Card";
 import styles from "../styles/posts.module.css";
-import { Post } from "../domain/post";
+import { Post } from "../domain";
 
 type PostsPageProps = {
   posts: Post[];
@@ -34,7 +34,7 @@ const PostsPage: NextPage<PostsPageProps> = (props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<PostsPageProps> = async () => {
   const posts = await fetch(
     "https://jsonplaceholder.typicode.com/posts"
   ).then((res) => res.json());
