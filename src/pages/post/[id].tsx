@@ -44,9 +44,9 @@ const PostPage: NextPage<PostPageProps> = (props) => {
 export const getServerSideProps: GetServerSideProps<PostPageProps> = async (
   context
 ) => {
-  const id = Array.isArray(context.query.id)
-    ? context.query.id[0]
-    : context.query.id;
+  const id = Array.isArray(context.params["id"])
+    ? context.params["id"][0]
+    : context.params["id"];
 
   const [post, comments] = await Promise.all([
     fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)

@@ -39,9 +39,9 @@ const AlbumPage: NextPage<AlbumPageProps> = (props) => {
 export const getServerSideProps: GetServerSideProps<AlbumPageProps> = async (
   context
 ) => {
-  const id = Array.isArray(context.query.id)
-    ? context.query.id[0]
-    : context.query.id;
+  const id = Array.isArray(context.params["id"])
+    ? context.params["id"][0]
+    : context.params["id"];
 
   const [album, photos] = await Promise.all([
     fetch(`https://jsonplaceholder.typicode.com/albums/${id}`)

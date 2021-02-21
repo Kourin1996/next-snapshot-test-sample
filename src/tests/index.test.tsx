@@ -1,13 +1,26 @@
-import { getPage } from "next-page-tester";
-import renderer from "react-test-renderer";
+// import { getPage } from "next-page-tester";
+// import { screen } from "@testing-library/react";
+// import fetchMock from "fetch-mock";
 
-describe("index page", () => {
-  test('should have "Welcome to"', async () => {
-    const { page } = await getPage({
-      route: "/index",
-    });
+// describe("Index page", () => {
+//   test("renders index page", async () => {
+//     const { page, render } = await getPage({
+//       route: "/",
+//     });
 
-    const tree = renderer.create(page).toJSON();
-    expect(tree).toMatchSnapshot();
+//     render();
+//     expect(screen.getByText("Welcome to")).toBeInTheDocument();
+//   });
+// });
+
+import { render, screen } from "@testing-library/react";
+import App from "../pages/index";
+
+describe("App", () => {
+  it("renders without crashing", () => {
+    render(<App />);
+    expect(
+      screen.getByRole("heading", { name: "Welcome to Next.js!" })
+    ).toBeInTheDocument();
   });
 });

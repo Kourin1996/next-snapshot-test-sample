@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`album page should render correctly 1`] = `
+<div
+  className="container"
+>
+  <h1>
+    Test Title
+  </h1>
+  <div
+    className="album"
+  >
+    <div
+      className="photos"
+    >
+      <div
+        className="photo"
+      >
+        <img
+          alt="Test Photo"
+          src="/test.png"
+        />
+        <p>
+          Test Photo
+        </p>
+      </div>
+      <div
+        className="photo"
+      >
+        <img
+          alt="Test Photo2"
+          src="/test-2.png"
+        />
+        <p>
+          Test Photo2
+        </p>
+      </div>
+    </div>
+    <div
+      className="album-author"
+    >
+      <div
+        className="user-card"
+      >
+        <p
+          className="user-card__name"
+        >
+          Adam
+        </p>
+        <p
+          className="user-card__email"
+        >
+          adam@hoge.org
+        </p>
+        <p
+          className="user-card__phone"
+        >
+          1-770-736-8031 x56442
+        </p>
+        <p
+          className="user-card__website"
+        >
+          adam.org
+        </p>
+        <div
+          className="user-card__company"
+        >
+          <p
+            className="user-card__company__title"
+          >
+            Company Info
+          </p>
+          <p
+            className="user-card__company__name"
+          >
+            Test-Company
+          </p>
+          <p
+            className="user-card__company__catch-phrase"
+          >
+            Next generation platform
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
