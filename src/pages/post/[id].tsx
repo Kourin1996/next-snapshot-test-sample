@@ -1,6 +1,8 @@
 import React from "react";
 import { GetServerSideProps, NextPage } from "next";
 import { User, Post, Comment } from "../../domain";
+import styles from "../../styles/post/index.module.css";
+import { UserCard } from "../../components/UserCard";
 
 type PostPageProps = {
   user: User;
@@ -9,9 +11,34 @@ type PostPageProps = {
 };
 
 const PostPage: NextPage<PostPageProps> = (props) => {
-  const { comments } = props;
+  const { user, post, comments } = props;
 
-  return <div>{JSON.stringify(comments)}</div>;
+  return (
+    <div className={styles.container}>
+      <div className={styles["post-container"]}>
+        <div className={styles["post-content"]}>
+          <h1 className={styles.title}>{post.title}</h1>
+          <p>{post.body}</p>
+        </div>
+        <div className={styles["post-author"]}>
+          <UserCard user={user} />
+        </div>
+      </div>
+      <div className={styles["comments"]}>
+        <h2 className={styles["comments-title"]}>Comment</h2>
+        {comments.map((comment) => {
+          const { id, name, email, body } = comment;
+
+          return (
+            <div key={id} className={styles["comment"]}>
+              <p className={styles["comment-header"]}>{`${name} (${email})`}</p>
+              <p className={styles["comment-body"]}>{body}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps<PostPageProps> = async (
@@ -35,7 +62,7 @@ export const getServerSideProps: GetServerSideProps<PostPageProps> = async (
       .catch(() => []),
   ]);
   const user = await fetch(
-    `https://jsonplaceholder.typicode.com/albums/${post.userId}`
+    `https://jsonplaceholder.typicode.com/users/${post.userId}`
   ).then((res) => res.json());
 
   return {

@@ -1,0 +1,45 @@
+.container {
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.album {
+  display: flex;
+  flex-direction: row;
+}
+
+.album-author {
+  margin-left: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .album {
+    flex-direction: column;
+  }
+  .album-author {
+    margin-left: 0px;
+    margin-top: 16px;
+  }
+}
+
+.photos {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px);
+  column-gap: 16px;
+  row-gap: 32px;
+}
+
+.photo {
+  max-width: 150px;
+}
+
+.photo > img {
+  max-height: 150px;
+}
+
+.photo > p {
+  text-align: center;
+  margin: 0px;
+  margin-top: 8px;
+}

@@ -1,6 +1,8 @@
 import React from "react";
 import { GetServerSideProps, NextPage } from "next";
 import { User, Album, Photo } from "../../domain";
+import styles from "../../styles/album/index.module.css";
+import { UserCard } from "../../components/UserCard";
 
 type AlbumPageProps = {
   user: User;
@@ -9,9 +11,29 @@ type AlbumPageProps = {
 };
 
 const AlbumPage: NextPage<AlbumPageProps> = (props) => {
-  const { photos } = props;
+  const { user, album, photos } = props;
 
-  return <div>{JSON.stringify(photos)}</div>;
+  return (
+    <div className={styles["container"]}>
+      <h1>{album.title}</h1>
+      <div className={styles["album"]}>
+        <div className={styles["photos"]}>
+          {photos.map((photo) => {
+            const { id, title, url } = photo;
+            return (
+              <div key={id} className={styles["photo"]}>
+                <img alt={title} src={url} />
+                <p>{title}</p>
+              </div>
+            );
+          })}
+        </div>
+        <div className={styles["album-author"]}>
+          <UserCard user={user} />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps<AlbumPageProps> = async (
@@ -37,7 +59,7 @@ export const getServerSideProps: GetServerSideProps<AlbumPageProps> = async (
       .catch(() => []),
   ]);
   const user = await fetch(
-    `https://jsonplaceholder.typicode.com/albums/${album.userId}`
+    `https://jsonplaceholder.typicode.com/users/${album.userId}`
   ).then((res) => res.json());
 
   return {
