@@ -1,0 +1,24 @@
+.container {
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.albums {
+  display: flex;
+  flex-direction: column;
+}
+
+.album {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.album:hover,
+.album:focus,
+.album:active {
+  text-decoration: underline;
+}
+
+.album:not(:first-child) {
+  margin-top: 8px;
+}
