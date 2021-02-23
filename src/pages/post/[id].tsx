@@ -1,7 +1,6 @@
 import React from "react";
 import { GetServerSideProps, NextPage } from "next";
 import { User, Post, Comment } from "../../domain";
-import styles from "../../styles/post/index.module.css";
 import { UserCard } from "../../components/UserCard";
 
 type PostPageProps = {
@@ -14,25 +13,25 @@ const PostPage: NextPage<PostPageProps> = (props) => {
   const { user, post, comments } = props;
 
   return (
-    <div className={styles.container}>
-      <div className={styles["post-container"]}>
-        <div className={styles["post-content"]}>
-          <h1 className={styles.title}>{post.title}</h1>
+    <div className="post__page">
+      <div className="post__main">
+        <div>
+          <h1 className="post__main__post__title">{post.title}</h1>
           <p>{post.body}</p>
         </div>
-        <div className={styles["post-author"]}>
+        <div className="post__main__author">
           <UserCard user={user} />
         </div>
       </div>
-      <div className={styles["comments"]}>
-        <h2 className={styles["comments-title"]}>Comment</h2>
+      <div className="post__comments">
+        <h2 className="post__comments__title">Comment</h2>
         {comments.map((comment) => {
           const { id, name, email, body } = comment;
 
           return (
-            <div key={id} className={styles["comment"]}>
-              <p className={styles["comment-header"]}>{`${name} (${email})`}</p>
-              <p className={styles["comment-body"]}>{body}</p>
+            <div key={id} className="post__comments__comment">
+              <p className="post__comments__comment__header">{`${name} (${email})`}</p>
+              <p className="post__comments__comment__content">{body}</p>
             </div>
           );
         })}

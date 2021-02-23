@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { GetServerSideProps, NextPage } from "next";
-import styles from "../styles/albums.module.css";
 import { Album } from "../domain";
 
 type AlbumsPageProps = {
@@ -12,15 +11,15 @@ const AlbumsPage: NextPage<AlbumsPageProps> = (props) => {
   const { albums } = props;
 
   return (
-    <div className={styles.container}>
+    <div className="albums__page">
       <h1>Albums</h1>
-      <div className={styles.albums}>
+      <div className="albums__list">
         {albums.map((album) => {
           const { id, title } = album;
 
           return (
             <Link key={id} href={`/album/${id}`}>
-              <a className={styles.album}>{title}</a>
+              <a className="albums__list__album">{title}</a>
             </Link>
           );
         })}

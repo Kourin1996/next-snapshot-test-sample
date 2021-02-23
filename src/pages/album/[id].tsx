@@ -1,7 +1,6 @@
 import React from "react";
 import { GetServerSideProps, NextPage } from "next";
 import { User, Album, Photo } from "../../domain";
-import styles from "../../styles/album/index.module.css";
 import { UserCard } from "../../components/UserCard";
 
 type AlbumPageProps = {
@@ -14,21 +13,25 @@ const AlbumPage: NextPage<AlbumPageProps> = (props) => {
   const { user, album, photos } = props;
 
   return (
-    <div className={styles["container"]}>
+    <div className="album__page">
       <h1>{album.title}</h1>
-      <div className={styles["album"]}>
-        <div className={styles["photos"]}>
+      <div className="album__body">
+        <div className="album__body__list">
           {photos.map((photo) => {
             const { id, title, url } = photo;
             return (
-              <div key={id} className={styles["photo"]}>
-                <img alt={title} src={url} />
-                <p>{title}</p>
+              <div key={id} className="album__body__list__item">
+                <img
+                  alt={title}
+                  src={url}
+                  className="album__body__list__item__image"
+                />
+                <p className="album__body__list__item__title">{title}</p>
               </div>
             );
           })}
         </div>
-        <div className={styles["album-author"]}>
+        <div className="album__body__author">
           <UserCard user={user} />
         </div>
       </div>

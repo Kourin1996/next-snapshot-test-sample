@@ -1,8 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { GetServerSideProps, NextPage } from "next";
-import { Card } from "../components/Card";
-import styles from "../styles/posts.module.css";
 import { Post } from "../domain";
 
 type PostsPageProps = {
@@ -13,19 +11,17 @@ const PostsPage: NextPage<PostsPageProps> = (props) => {
   const { posts } = props;
 
   return (
-    <div className={styles.container}>
+    <div className="posts__page">
       <h1>Posts</h1>
-      <div className={styles.posts}>
+      <div className="posts__list">
         {posts.map((post) => {
           const { id, title, body } = post;
           return (
             <Link key={id} href={`/post/${id}`}>
-              <Card>
-                <div className={styles["post-container"]}>
-                  <h2>{title}</h2>
-                  <span>{body}</span>
-                </div>
-              </Card>
+              <div className="posts__list__post">
+                <h2 className="posts__list__post__title">{title}</h2>
+                <span>{body}</span>
+              </div>
             </Link>
           );
         })}
